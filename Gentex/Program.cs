@@ -73,5 +73,5 @@ using (StreamWriter outfile = new StreamWriter(@"C:/Users/hitan/source/repos/Gen
         }
         outfile.WriteLine(content);
     }
-    Console.WriteLine("Check Output.csv file!");
+    Console.WriteLine("Check the Output.csv file!");
 }
