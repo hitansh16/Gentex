@@ -1,7 +1,7 @@
 ﻿var start = DateTime.Now; //store start time of script
 string path = "C:/Users/hitan/source/repos/Gentex/Gentex/data.csv";
 int dataCount = System.IO.File.ReadAllLines(path).Length;
-string[,] output = new string[dataCount, 6]; //create an array the size of the number of shapes in the csv file
+string[,] output = new string[dataCount, 10]; //create an array the size of the number of shapes in the csv file
 string[] lines = System.IO.File.ReadAllLines(path);
 int count = 0; //initialize variable to keep count of the amount of shapes processed
 double area = 0;
@@ -62,10 +62,14 @@ foreach (string line in lines)
     }
     output[count, 0] = (count + 1).ToString(); //store the shape ID
     output[count, 1] = result; //store the shape type
-    output[count, 2] = area.ToString(); //store the shape area
-    output[count, 3] = perimeter.ToString(); //store the shape perimeter
-    output[count, 4] = CenterX.ToString(); //store the shape's center X
-    output[count, 5] = CenterY.ToString(); //store the shape's center Y
+    output[count, 2] = "Area";
+    output[count, 3] = area.ToString(); //store the shape area
+    output[count, 4] = "Perimeter";
+    output[count, 5] = perimeter.ToString(); //store the shape perimeter
+    output[count, 6] = "CenterX";
+    output[count, 7] = CenterX.ToString(); //store the shape's center X
+    output[count, 8] = "CenterY";
+    output[count, 9] = CenterY.ToString(); //store the shape's center Y
     count++; //increment to next shape
 }
 using (StreamWriter outfile = new StreamWriter(@"C:/Users/hitan/source/repos/Gentex/Gentex/Output.csv")) //define path for output file
