@@ -8,6 +8,9 @@ double area = 0;
 double perimeter = 0;
 double CenterX = 0;
 double CenterY = 0;
+double tmp = 0;
+int k;
+double bruh;
 foreach (string line in lines)
 {
     var result = line.Split(',')[1]; //split each part of the lines where a , is present and pick the second data
@@ -43,15 +46,19 @@ foreach (string line in lines)
     {
         area = 0; //reset area
         perimeter = 0; //reset perimeter
-        for (int i = 3; i < line.Split(',').Length - 4; i = i + 4) //run loop for the amount of data in the line
+        for (int i = 3; i < line.Split(',').Length - 4; i = i + 4)
         {
-            area += (double.Parse(line.Split(',')[i + 4]) - double.Parse(line.Split(',')[i])) * (double.Parse(line.Split(',')[i + 6]) + double.Parse(line.Split(',')[i + 2])) / 2; //area of polygon
+            k = (i + 4) % (line.Split(',').Length);
+            tmp = double.Parse(line.Split(',')[i]) * double.Parse(line.Split(',')[k + 2]) - double.Parse(line.Split(',')[k]) * double.Parse(line.Split(',')[i + 2]);
+            area += tmp;
+            CenterX += (double.Parse(line.Split(',')[i]) + double.Parse(line.Split(',')[k])) * tmp;
+            CenterY += (double.Parse(line.Split(',')[i + 2]) + double.Parse(line.Split(',')[k + 2])) * tmp;
             perimeter += Math.Sqrt(Math.Pow((double.Parse(line.Split(',')[i + 4]) - double.Parse(line.Split(',')[i])), 2) + Math.Pow((double.Parse(line.Split(',')[i + 6]) - double.Parse(line.Split(',')[i + 2])), 2)); //perimeter of ellipse (sum of all distances from one point to another)
         }
-        area = Math.Abs(area); //make sure the answer is positive
+        area *= 0.5f;
+        CenterX *= 1.0f / (6.0f * area);
+        CenterY *= 1.0f / (6.0f * area);
         perimeter = Math.Abs(perimeter); //make sure the answer is positive
-        CenterX = 0; //placeholder
-        CenterY = 0; //placeholder
     }
     output[count, 0] = (count + 1).ToString(); //store the shape ID
     output[count, 1] = result; //store the shape type
