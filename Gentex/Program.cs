@@ -70,14 +70,15 @@ foreach (string line in lines)
 }
 using (StreamWriter outfile = new StreamWriter(@"C:/Users/hitan/source/repos/Gentex/Gentex/output.csv")) //define path for output file
 {
-    outfile.WriteLine("ID,Shape,Area,Perimeter,CenterX,CenterY,");
+    outfile.WriteLine("ID,Shape,Area,Perimeter,CenterX,CenterY");
     for (int x = 0; x < output.GetLength(0); x++) //run loop for all shapes
     {
         string content = ""; //reset string
-        for (int y = 0; y < output.GetLength(1); y++) //run loop for data of each shape
+        for (int y = 0; y < output.GetLength(1) - 1; y++) //run loop for data of each shape
         {
             content += output[x, y] + ","; //create string with , seperating all data
         }
+        content += output[x, output.GetLength(1) - 1];
         outfile.WriteLine(content); //push to csv file
     }
     Console.WriteLine("Check the output.csv file!"); //print to let user know that script is complete
