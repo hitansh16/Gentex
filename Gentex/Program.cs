@@ -68,7 +68,7 @@ foreach (string line in lines)
     output[count, 5] = CenterY.ToString(); //store the shape's center Y
     count++; //increment to next shape
 }
-using (StreamWriter outfile = new StreamWriter(@"C:/Users/hitan/source/repos/Gentex/Gentex/Output.csv")) //define path for output file
+using (StreamWriter outfile = new StreamWriter(@"C:/Users/hitan/source/repos/Gentex/Gentex/output.csv")) //define path for output file
 {
     outfile.WriteLine("ID,Shape,Area,Perimeter,CenterX,CenterY,");
     for (int x = 0; x < output.GetLength(0); x++) //run loop for all shapes
@@ -80,7 +80,7 @@ using (StreamWriter outfile = new StreamWriter(@"C:/Users/hitan/source/repos/Gen
         }
         outfile.WriteLine(content); //push to csv file
     }
-    Console.WriteLine("Check the Output.csv file!"); //print to let user know that script is complete
+    Console.WriteLine("Check the output.csv file!"); //print to let user know that script is complete
 }
 var end = DateTime.Now; //store end time of script
 Console.WriteLine(end - start); //print out amount of time taken to run script
