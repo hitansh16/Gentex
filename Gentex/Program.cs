@@ -83,4 +83,4 @@ using (StreamWriter outfile = new StreamWriter(@"C:/Users/hitan/source/repos/Gen
     Console.WriteLine("Check the output.csv file!"); //print to let user know that script is complete
 }
 var end = DateTime.Now; //store end time of script
-Console.WriteLine(end - start); //print out amount of time taken to run script
+Console.WriteLine(end - start); //print out amount of time taken to run
